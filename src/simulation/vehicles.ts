@@ -52,8 +52,8 @@ export class VehicleManager {
     const rate = effectiveRatePerApproach(this.ratePerMinute, this.scenario);
 
     for (const dir of DIRECTIONS) {
-      this.arrivalDemand++;
       if (time >= this.nextSpawnAt[dir]) {
+        this.arrivalDemand++;
         this.nextSpawnAt[dir] = time + this.spawnRng.exponential(rate);
         this.spawn(dir, time);
       }
