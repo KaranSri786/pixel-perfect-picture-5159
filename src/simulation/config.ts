@@ -1,4 +1,4 @@
-import type { Phase, Scenario } from "./types";
+import type { Direction, Phase, Scenario } from "./types";
 
 /** All tunable simulation constants in one place. */
 export const SIM_CONFIG = {
@@ -41,11 +41,6 @@ export const PHASE_DIRECTIONS: Record<Phase, readonly Direction[]> = {
 };
 
 export const OTHER_PHASE: Record<Phase, Phase> = { NS: "EW", EW: "NS" };
-
-type Direction = keyof ReturnType<typeof phaseDirections>;
-function phaseDirections() {
-  return { N: 0, S: 0, E: 0, W: 0 };
-}
 
 /** Arrival rate per approach, per second, for the given scenario. */
 export function effectiveRatePerApproach(ratePerMinute: number, scenario: Scenario): number {
